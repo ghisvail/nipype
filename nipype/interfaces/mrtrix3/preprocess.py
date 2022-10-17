@@ -215,7 +215,6 @@ class DWIBiasCorrectInputSpec(MRTrix3BaseInputSpec):
         argstr="%s",
         position=-1,
         desc="the output bias corrected DWI image",
-        genfile=True,
     )
 
 
@@ -257,8 +256,6 @@ class DWIBiasCorrect(MRTrix3Base):
 
     def _list_outputs(self):
         outputs = self.output_spec().get()
-        if self.inputs.out_file:
-            outputs["out_file"] = op.abspath(self.inputs.out_file)
         if self.inputs.bias:
             outputs["bias"] = op.abspath(self.inputs.bias)
         return outputs
